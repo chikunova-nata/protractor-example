@@ -1,0 +1,8 @@
+<li data-e2e="todo-list" [class.completed]="todo.completed" [class.editing]="editing">
+  <div class="view">
+    <input data-e2e="todo-completed" class="toggle" type="checkbox" (click)="toggleCompletion()" [checked]="todo.completed">
+    <label data-e2e="todo-label" (dblclick)="edit(todo)">{{ todo.title }}</label>
+    <button data-e2e="todo-destroy" class="destroy" (click)="remove()"></button>
+  </div>
+  <input class="edit" *ngIf="editing" [value]="todo.title" #editedtodo (blur)="stopEditing(editedtodo)" (keyup.enter)="stopEditing(editedtodo)" (keyup.escape)="cancelEditing()">
+</li>
